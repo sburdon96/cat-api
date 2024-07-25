@@ -37,7 +37,10 @@ export class CommsService {
   }
 
   private listCatNames(cats: Cat[]): string {
-    const catNames = cats.map((c) => c.name);
+    const catNames = cats
+      .filter((c) => c.subscriptionActive)
+      .map((a) => a.name);
+
     const length = catNames.length;
 
     switch (length) {
